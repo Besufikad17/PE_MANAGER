@@ -15,6 +15,26 @@
             $this->phonenumber = $phonenumber;
             $this->password = $password;
         }
+
+        function getFname() {
+            return $this->fname;
+        }
+
+        function getLname() {
+            return $this->lname;
+        }
+
+        function getEmail() {
+            return $this->email;
+        }
+
+        function getPhoneNumber() {
+            return $this->phonenumber;
+        }
+
+        function getPassword() {
+            return $this->password;
+        }
     }
 
 ?>
