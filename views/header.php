@@ -5,21 +5,21 @@
     <nav>
         <ul>
             <?php
-                $isLoggedIn = true;
+                $isLoggedIn = false;
 
-                if (is_null($_SESSION["user"]) == 1) {
-                    $isLoggedIn = false;
+                if (is_null($_SESSION["user"]) == 0) {
+                    $isLoggedIn = true;
                 }
 
-                $links = $isLoggedIn ?  `<li aria-current="page">
-                                            <a to="profile.html"><span>{$_SESSION["user"]}</span></a>
-                                        </li>` :
-                                        `<li aria-current="page">
-                                            <a to="signup.html"><span>SignUp</span></a>
+                $links = $isLoggedIn ?  "<li aria-current='page'>
+                                            <a href='profile.html'><span>{$_SESSION["user"]}</span></a>
+                                        </li>" :
+                                        '<li aria-current="page">
+                                            <a href="signup.html"><span>SignUp</span></a>
                                         </li>
                                         <li aria-current="page">
-                                            <a to="login.html"><span>Login</span></a>
-                                        </li>`;
+                                            <a href="login.html"><span>Login</span></a>
+                                        </li>';
             ?>
             <?= $links ?>
             <li aria-current="page">

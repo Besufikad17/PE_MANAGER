@@ -9,7 +9,17 @@
 </head>
 <body>
     <?php 
-       require("views/header.php")
+       require("views/header.php");
+
+       $content = $isLoggedIn ? 
+                "" : 
+                "<div class='bg-container'>
+                    <div class='bg-row'>
+                        <img src='assets/imgs/empty2.png' alt='login' class='bg2' /><br>
+                    </div>
+                    <span class='msg'>No employees :( register as user <a href='signup.html'>here</a></span>
+                </div>"; 
     ?>
+    <?= $content ?>
 </body>
 </html>

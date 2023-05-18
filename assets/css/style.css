@@ -156,7 +156,9 @@ ul {
 li {
   position: relative;
   height: 100%;
+  margin-right: 4px;
 }
+
 li span {
   display: flex;
   height: 100%;
@@ -172,4 +174,26 @@ li span {
 
 li span:hover {
   color: var(--color-theme-1);
+}
+
+.bg-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bg-row{
+  display: flex;
+  flex-direction: row;
+  margin-top: 100px;
+}
+
+.bg2 {
+  width: 300px;
+  height: 100%;
+}
+
+.msg {
+  font-size: 16px;
 }
