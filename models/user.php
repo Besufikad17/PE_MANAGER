@@ -8,7 +8,7 @@
         private $phonenumber;
         private $password;
 
-        function User($fname, $lname, $email, $phonenumber, $password){
+        public function __construct($fname, $lname, $email, $phonenumber, $password){
             $this->fname = $fname;
             $this->lname = $lname;
             $this->email = $email;

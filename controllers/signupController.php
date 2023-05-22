@@ -11,19 +11,23 @@
 
     // form validation
 
+    if($fname == "" || $lname == "" || $email == "" || $phonenumber == "" || $password == "" || $cpassword == ""){
+        echo "<script>
+                alert('Please enter all fields!!');
+             </script>";
+    }
 
     if($cpassword != $password) {
         echo "<script>
                 alert('Confirm password properly!!');
              </script>";
     }else {
-        if(userExists($email, $phonenumber, $pdo)){
-            echo "User already exists!!";
+        if(emailExists($email) || phoneNumberExists($phonenumber)){
+            echo "<script>
+                    alert('User already exists!!');
+                 </script>";
         }else {
-            $statement = $pdo->prepare("insert into user(fname,lname,email,phonenumber,password) values(
-            '$fname','$lname','$email','$phonenumber','$password')");
-            $result = $statement->execute();
-
+            createUser($fname, $lname, $email, $phonenumber, $password);
             $_SESSION["user"] = new User($fname, $lname, $email, $phonenumber, $password);
             session_start();
             header('Location: /index.php');
