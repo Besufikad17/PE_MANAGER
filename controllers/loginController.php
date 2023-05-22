@@ -2,26 +2,29 @@
     include "models/user.php";
     include "models/db.php";
 
-    $email_or_phonenumber = $_POST["email-phonenumber"];
+    $email_or_phonenumber = $_POST["phonenumber-email"];
     $password = $_POST["password"];
     $isLoggedIn = false;
 
-    foreach($users as $user){
-        echo $user->getEmail(), " ", $user->getPhoneNumber(), " ", $user->getPassword(); 
-        // if($user->getPassword() == $password && ($user->getEmail() == $email_or_phonenumber || $user->getPhoneNumber() == $email_or_phonenumber)){
-        //     echo "yay";
-        //     $isLoggedIn = true;
-        //     // $_SESSION["user"] = $user->getFname();
-        //     // session_start();
-        //     // header('Location: index.php');
-        //     // exit;
-        // }
+    try {
+        $pdo = new PDO("mysql:host=127.0.0.1;dbname=ASTU", "root", "");
+    } catch (PDOException $e) {
+        die($e->getMessage());
     }
+    
+    $statement = $pdo->prepare('select * from user where email='.$email_or_phonenumber.' passoword='.$password);
+    $result = $statement->execute();
+    var_dump($result);
+    // $isLoggedIn = true;
+    // $_SESSION["user"] = "john";
+    // session_start();
+    // header('Location: index.php');
+    // exit;
 
-    // if(!$isLoggedIn) {
-    //     echo "):";
-    //     // echo "<script>
-    //     //         alert('Invalid credentials!!');
-    //     //      </script>";
-    // }
+    if(!$isLoggedIn) {
+        echo "):";
+        echo "<script> 
+                alert('Invalid credentials!!');
+             </script>";
+    }
 ?>
