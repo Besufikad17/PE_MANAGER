@@ -5,10 +5,10 @@
     <nav>
         <ul>
             <?php
-                $isLoggedIn = false;
+                $isLoggedIn = true;
 
-                if (is_null($_SESSION["user"]) == 0) {
-                    $isLoggedIn = true;
+                if (is_null($_SESSION["user"])) {
+                    $isLoggedIn = false;
                 }
 
                 $links = $isLoggedIn ?  "<li aria-current='page'>

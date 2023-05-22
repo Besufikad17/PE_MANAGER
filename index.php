@@ -11,6 +11,8 @@
     <?php 
        require("views/header.php");
 
+       echo getenv('DNS');
+
        $content = $isLoggedIn ? 
                 "" : 
                 "<div class='bg-container'>

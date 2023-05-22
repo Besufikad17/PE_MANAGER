@@ -16,23 +16,23 @@
             $this->password = $password;
         }
 
-        function getFname() {
+        public function getFname() {
             return $this->fname;
         }
 
-        function getLname() {
+        public function getLname() {
             return $this->lname;
         }
 
-        function getEmail() {
+        public function getEmail() {
             return $this->email;
         }
 
-        function getPhoneNumber() {
+        public function getPhoneNumber() {
             return $this->phonenumber;
         }
 
-        function getPassword() {
+        public function getPassword() {
             return $this->password;
         }
     }
