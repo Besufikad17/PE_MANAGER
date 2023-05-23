@@ -2,26 +2,19 @@
     <div class="corner">
         <a href="#">EMANAGER</a>
     </div>
-    <nav>
-        <ul>
-            <li aria-current="page">
-                <a href="https://github.com/Besufikad17/PE_MANAGER">Github</a>
-            </li>
+    <div class="links">
+            <a href="https://github.com/Besufikad17/PE_MANAGER">Github</a>
+          
             <?php
-
-                include "./models/user.php";
 
                 $isLoggedIn = true;
 
-                if (is_null($_SESSION["user"])) {
+                if (is_null($_COOKIE["firstname"])) {
                     $isLoggedIn = false;
                 }
 
-                // echo $object->getFname();
-            //  "<li aria-current='page'>
-            //                                 <a href='profile.html'><span>{$object->getFname()}</span></a>
-            //                             </li>"
-                $links = $isLoggedIn ?  var_dump($_SESSION["user"])
+
+                $links = $isLoggedIn ?  "<span>{$_COOKIE["firstname"]}</span>"
                                          :
                                         '<li aria-current="page">
                                             <a href="signup.html"><span>SignUp</span></a>
@@ -31,6 +24,5 @@
                                         </li>';
                 ?>
                 <?= $links ?>
-        </ul>
-    </nav>
+    </div>
 </header>

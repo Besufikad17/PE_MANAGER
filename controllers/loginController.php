@@ -20,9 +20,7 @@
         login($password, $user->getPassword());
 
         // session management
-        // FIXME: Storing object in the session 
-        $_SESSION["user"] =  $user;
-        session_start();
+        setcookie("firstname", $user->getFname() , time() + (86400 * 30), "/");
         header('Location: /index.php');
         die();
     } catch (Exception $e) {

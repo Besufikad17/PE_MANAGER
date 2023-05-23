@@ -9,10 +9,10 @@
 </head>
 <body>
     <?php 
+       
        require("views/header.php");
 
-       $content = $isLoggedIn ? 
-                "" : 
+       $content = $isLoggedIn ? include "./views/popup.php" : 
                 "<div class='bg-container'>
                     <div class='bg-row'>
                         <img src='assets/imgs/empty2.png' alt='login' class='bg2' /><br>

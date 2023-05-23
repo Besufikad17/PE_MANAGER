@@ -111,31 +111,26 @@ body {
 }
 
 header {
-  display: flex;
-  justify-content: center;
-  background-color: white;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  padding: 20px 10px;
 }
 
 .corner {
-  width: 3em;
-  height: 3em;
   float: left;
+  margin-left: 10px;
 }
 
-.corner a, li a {
+.corner a {
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
   color: black;
+  margin-right: 10px;
   width: 100%;
   height: 100%;
-}
-
-.corner img, li img {
-  width: 2em;
-  height: 2em;
-  object-fit: contain;
 }
 
 nav {
@@ -222,4 +217,15 @@ li span:hover {
   background-color: #7db9c4;
   border-color: #7db9c4;
   color: white;
+}
+
+.links {
+  float: right;
+  margin-left: 5px;
+}
+.links a, .links span {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  margin-right: 6px;
 }

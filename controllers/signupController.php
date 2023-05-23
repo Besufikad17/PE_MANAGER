@@ -28,9 +28,7 @@
         $user = new User($result[0]["fname"], $result[0]["lname"], $result[0]["email"], $result[0]["phonenumber"], $result[0]["password"]);
 
         // session management
-        // FIXME: Storing object in session
-        session_start();
-        $_SESSION["user"] = serialize($user);
+        setcookie("firstname", $user->getFname() , time() + (86400 * 30), "/");
         header('Location: /index.php');
         die();
 
