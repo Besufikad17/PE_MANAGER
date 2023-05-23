@@ -28,7 +28,7 @@
         $user = new User($result[0]["fname"], $result[0]["lname"], $result[0]["email"], $result[0]["phonenumber"], $result[0]["password"]);
 
         // session management
-        setcookie("firstname", $user->getFname() , time() + (86400 * 30), "/");
+        setcookie("email", $user->getEmail() , time() + (86400 * 30), "/");
         header('Location: /index.php');
         die();
 

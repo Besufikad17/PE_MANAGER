@@ -9,19 +9,13 @@
 
                 $isLoggedIn = true;
 
-                if (is_null($_COOKIE["firstname"])) {
+                if (is_null($_COOKIE["email"])) {
                     $isLoggedIn = false;
                 }
 
 
-                $links = $isLoggedIn ?  "<span>{$_COOKIE["firstname"]}</span>"
-                                         :
-                                        '<li aria-current="page">
-                                            <a href="signup.html"><span>SignUp</span></a>
-                                        </li>
-                                        <li aria-current="page">
-                                            <a href="login.html"><span>Login</span></a>
-                                        </li>';
+                $links = $isLoggedIn ?  "<a href='views/profile.php'>{$_COOKIE["email"]}</a>" :
+                                        '<a href="login.html">Login</a>';
                 ?>
                 <?= $links ?>
     </div>

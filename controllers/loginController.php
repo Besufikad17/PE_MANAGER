@@ -20,7 +20,7 @@
         login($password, $user->getPassword());
 
         // session management
-        setcookie("firstname", $user->getFname() , time() + (86400 * 30), "/");
+        setcookie("email", $user->getEmail() , time() + (86400 * 30), "/");
         header('Location: /index.php');
         die();
     } catch (Exception $e) {
