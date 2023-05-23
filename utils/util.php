@@ -51,10 +51,19 @@
     }
 
     function login($password, $hashed_password) {
-        if($password == $hashed_password) {
+        if(password_verify($password, $hashed_password)) {
             return;
         }else {
             throw new InvalidCredentialException("Invalid credentials!!");
+        }
+    }
+
+    function signup($fname, $lname, $email, $phonenumber, $password) {
+        if(emailExists($email) || phoneNumberExists($phonenumber)){
+            throw new UserAlreadyExistsException("User alredy exists!!");
+        }else {
+            $hashed_pwd = password_hash($password, PASSWORD_DEFAULT);
+            return createUser($fname, $lname, $email, $phonenumber, $hashed_pwd);
         }
     }
 

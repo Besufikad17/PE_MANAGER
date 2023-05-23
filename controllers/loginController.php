@@ -20,11 +20,13 @@
         login($password, $user->getPassword());
 
         // session management
+        // FIXME: Storing object in the session 
         $_SESSION["user"] =  $user;
         session_start();
         header('Location: /index.php');
         die();
     } catch (Exception $e) {
+        // TODO: Better Exception handling
         echo $e;
     }
 ?>

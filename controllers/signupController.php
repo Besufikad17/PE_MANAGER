@@ -9,29 +9,33 @@
     $password = $_POST["password"];
     $cpassword = $_POST["cpassword"];
 
-    // form validation
 
-    if($fname == "" || $lname == "" || $email == "" || $phonenumber == "" || $password == "" || $cpassword == ""){
-        echo "<script>
-                alert('Please enter all fields!!');
-             </script>";
-    }
+    try {
 
-    if($cpassword != $password) {
-        echo "<script>
-                alert('Confirm password properly!!');
-             </script>";
-    }else {
-        if(emailExists($email) || phoneNumberExists($phonenumber)){
+        $params = [$fname, $lname, $email, $phonenumber, $password, $cpassword];
+
+        //form validation
+        checkInputs($params);
+
+        if($cpassword != $password) {
             echo "<script>
-                    alert('User already exists!!');
+                    alert('Confirm password properly!!');
                  </script>";
-        }else {
-            createUser($fname, $lname, $email, $phonenumber, $password);
-            session_start();
-            $_SESSION["user"] = serialize(new User($fname, $lname, $email, $phonenumber, $password));
-            header('Location: /index.php');
-            die();
-        }            
+        }
+
+        // inserting new user
+        $result = signup($fname, $lname, $email, $phonenumber, $password);
+        $user = new User($result[0]["fname"], $result[0]["lname"], $result[0]["email"], $result[0]["phonenumber"], $result[0]["password"]);
+
+        // session management
+        // FIXME: Storing object in session
+        session_start();
+        $_SESSION["user"] = serialize($user);
+        header('Location: /index.php');
+        die();
+
+    } catch (Exception $e) {
+        echo $e->getMessage();
     }
+
 ?>
