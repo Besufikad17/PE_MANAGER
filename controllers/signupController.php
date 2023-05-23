@@ -28,8 +28,8 @@
                  </script>";
         }else {
             createUser($fname, $lname, $email, $phonenumber, $password);
-            $_SESSION["user"] = new User($fname, $lname, $email, $phonenumber, $password);
             session_start();
+            $_SESSION["user"] = serialize(new User($fname, $lname, $email, $phonenumber, $password));
             header('Location: /index.php');
             die();
         }            

@@ -1,6 +1,7 @@
 <?php
 
     include "../utils/db.php";
+    include "../utils/exceptions.php";
 
     function createUser($fname, $lname, $email, $phonenumber, $password) {
         $connection = new DBConnection();
@@ -29,6 +30,32 @@
     function getUserByPhoneNumber($phonenumber) {
         $connection = new DBConnection();
         return $connection->runQuery("select * from user where phonenumber='$phonenumber'");
+    }
+
+    function checkInputs(array $inputs) {
+        foreach($inputs as $input) {
+            if($input == ""){
+                throw new IncompleteInputException("Please enter all fields!!");
+            }
+        }
+    }
+
+    function getUser($input) {
+        if(emailExists($input)) {
+            return getUserByEmail($input);
+        }else if(phoneNumberExists($input)) {
+            return getUserByPhoneNumber($input);
+        }else {
+            throw new UserNotFoundException("User doesn't exist!!");
+        }
+    }
+
+    function login($password, $hashed_password) {
+        if($password == $hashed_password) {
+            return;
+        }else {
+            throw new InvalidCredentialException("Invalid credentials!!");
+        }
     }
 
 ?>
